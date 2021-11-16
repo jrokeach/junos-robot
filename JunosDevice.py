@@ -2,8 +2,8 @@ from jnpr.junos import Device
 from lxml import etree
 from xmltodict import parse
 
-class JunosDevice(object):
 
+class JunosDevice(object):
     def __init__(self):
         self.device = None
 
@@ -27,7 +27,7 @@ class JunosDevice(object):
     def get_bgp_peers(self):
         r = self.device.rpc.get_bgp_neighbor_information()
         peers = parse(etree.tostring(r))
-        peers = peers['bgp-information']['bgp-peer']
+        peers = peers["bgp-information"]["bgp-peer"]
         return peers
 
     def bgp_peer_count(self, status=None):
@@ -37,6 +37,6 @@ class JunosDevice(object):
         else:
             peercount = 0
             for peer in peers:
-                if peer['peer-state'] == status:
+                if peer["peer-state"] == status:
                     peercount += 1
         return peercount
