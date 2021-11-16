@@ -1,5 +1,5 @@
 *** Settings ***
-Library JunosDevice.py
+Library	JunosDevice.py
 
 *** Test Cases ***
 Check Hostname
